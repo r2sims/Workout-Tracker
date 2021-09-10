@@ -10,14 +10,14 @@ require('dotenv').config();
 //requiring schemas
 //const {Workout}= require ('./models');
 
-//setting up Port
+
 const PORT= process.env.PORT || 3001;
 
-//different in production // if db not created yet mongoose will create db automatically
+
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    //giving me errors to connect...
+    
     useCreateIndex: true,
     useFindAndModify: false,
     
@@ -29,21 +29,20 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
     .catch(error => console.log(error));
 
 
-//setting up express as a function
+
 const app = express();
 
 
-//logger middleware (dev: color coded)
+
 app.use(logger("dev"));
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-//middlewares to get values from req.body
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//requiring routes
-//app.use(workout);
+
 app.use(require('./routes/workoutRoutes.js'));
 app.use(require('./routes/htmlRoutes.js'));
 
