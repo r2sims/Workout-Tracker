@@ -23,7 +23,7 @@ router.put('/api/workouts/:id', async (req, res) => {
 router.get('/api/workouts/range', async (req, res) => {
   const results = await db.Workout.find();
   res.json(results);
-  console.log(res.json)
+  console.log(res.json)//
 });
 
 
