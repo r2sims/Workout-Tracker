@@ -206,3 +206,4 @@ function generatePalette() {
   
   // get all workout data from back-end
   API.getWorkoutsInRange().then(populateChart);
+  //API.getWorkoutInRange().then(populateChart);
